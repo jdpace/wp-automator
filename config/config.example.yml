@@ -1,0 +1,9 @@
+##############################################
+#  Install specific config for WP Automator  #
+#                                            #
+#  Save this file to config/config.yml       #
+##############################################
+
+authentication:
+  username: admin
+  password: admin
