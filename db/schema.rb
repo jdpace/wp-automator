@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090929150943) do
+ActiveRecord::Schema.define(:version => 20090929193237) do
 
   create_table "sites", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20090929150943) do
     t.string   "token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "state",      :default => "pending"
   end
 
 end

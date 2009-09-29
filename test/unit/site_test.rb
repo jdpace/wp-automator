@@ -7,6 +7,8 @@ class SiteTest < ActiveSupport::TestCase
   
   should_act_as_url :name
   
+  should_have_states :pending, :deploying, :complete
+  
   should_validate_uniqueness_of :domain
   should_validate_presence_of   :name
   
