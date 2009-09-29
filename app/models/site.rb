@@ -34,6 +34,10 @@ class Site < ActiveRecord::Base
     [self.url, App.server[:domain]].join('.')
   end
   
+  def log_file
+    File.join(Rails.root, 'log', "#{self.url}.log")
+  end
+  
   protected
   
     def generate_token

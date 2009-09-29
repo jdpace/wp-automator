@@ -147,3 +147,9 @@ table .main { width: 100%; }
 .html ul, .html ol  { margin-left: 2em; margin-bottom: 1em; }
 .html ul li   { margin-bottom: 0.5em; list-style: disc; }
 .html ol li   { margin-bottom: 0.5em; list-style: decimal; }
+
+/* Log File */
+.log {
+  height: 400px; overflow: auto; padding: 10px;
+  border: 1px solid #C6C6C6; background-color: #F9F9F9;
+}

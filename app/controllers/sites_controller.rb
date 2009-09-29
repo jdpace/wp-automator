@@ -1,11 +1,11 @@
 class SitesController < ApplicationController
+  before_filter :find_site, :only => [:show, :deploy, :log]
   
   def index
     @sites = Site.all
   end
   
   def show
-    @site = Site.find_by_url!(params[:id])
     render :"show_#{@site.state}"
   end
   
@@ -23,4 +23,24 @@ class SitesController < ApplicationController
     end
   end
   
+  def deploy
+    @site.deploy!
+    redirect_to site_path(@site) 
+  end
+  
+  def log
+    if File.exists?(@site.log_file)
+      render :text => `tail -n 1000 #{@site.log_file}`, :content_type => 'text/plain', :status => (@site.complete? ? :ok : :partial_content)
+    else
+      render :nothing => true
+    end
+  end
+    
+  
+  protected
+  
+    def find_site
+      @site = Site.find_by_url!(params[:id])
+    end
+    
 end

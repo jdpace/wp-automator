@@ -1,2 +1,4 @@
 - content_for :title, @site.name
 - content_for :meta, "current state: #{@site.state}"
+
+%pre.log{:"data-location" => log_site_url(@site)}= h render(:file => @site.log_file) if File.exists?(@site.log_file)

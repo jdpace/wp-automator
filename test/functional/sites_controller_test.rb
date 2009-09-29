@@ -69,4 +69,16 @@ class SitesControllerTest < ActionController::TestCase
     end
   end
   
+  context 'PUT /sites/:url/deploy' do
+    setup do
+      @site = Factory.build(:site, :url => 'site')
+      Site.expects(:find_by_url!).with(@site.url).returns(@site)
+      @site.expects(:deploy!).returns(true)
+      put :deploy, :id => @site.to_param
+    end
+    
+    should_assign_to(:site) { @site }
+    should_redirect_to('the site page again') { site_path(@site) }
+  end
+  
 end
