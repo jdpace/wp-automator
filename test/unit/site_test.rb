@@ -12,7 +12,7 @@ class SiteTest < ActiveSupport::TestCase
   should_validate_uniqueness_of :domain
   should_validate_presence_of   :name
   
-  context 'Creating a Site' do
+  context 'A Site' do
     setup do
       @site = Factory(:site)
     end
@@ -23,6 +23,27 @@ class SiteTest < ActiveSupport::TestCase
     
     should 'use the url as to_param' do
       assert_equal @site.url, @site.to_param
+    end
+    
+    should 'know where to install at' do
+      assert_equal "#{App.server[:sites_directory]}/#{@site.url}", @site.install_path
+    end
+    
+    should 'know where it can be accessed' do
+      assert_equal "#{@site.url}.#{App.server[:domain]}", @site.sub_domain
+    end
+    
+    should 'know where to keep its log file' do
+      assert_equal "#{Rails.root}/log/deploys/#{@site.url}.log", @site.log_file
+    end
+    
+    context 'being deployed' do
+      setup do
+        @site.expects(:run_deploy_task).returns(true)
+        @site.deploy!
+      end
+      
+      should_change('the state', :to => 'deploying') { @site.state }
     end
   end
   

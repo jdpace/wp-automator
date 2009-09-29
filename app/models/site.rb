@@ -15,7 +15,7 @@ class Site < ActiveRecord::Base
   aasm_state :complete
   
   aasm_event :deploy do
-    transitions :from => :pending, :to => :deploying
+    transitions :from => :pending, :to => :deploying, :guard => :run_deploy_task
   end
   
   aasm_event :complete do
@@ -35,7 +35,7 @@ class Site < ActiveRecord::Base
   end
   
   def log_file
-    File.join(Rails.root, 'log', "#{self.url}.log")
+    File.join(Rails.root, 'log', 'deploys', "#{self.url}.log")
   end
   
   protected
@@ -43,4 +43,16 @@ class Site < ActiveRecord::Base
     def generate_token
       self.token = ActiveSupport::SecureRandom.base64(10)
     end
+    
+    def run_deploy_task
+      puts 'uh oh'
+      options = {
+        :rails_env  => Rails.env,
+        :site_id    => self.id
+      }
+      args = options.map { |n, v| "#{n.to_s.upcase}='#{v}'" }
+      system "#{App.server[:rake]} sites:deploy #{args.join(' ')} --trace 2>&1 >> #{self.log_file} &"
+    end
+  
+    
 end
