@@ -3,7 +3,8 @@ config/database.yml
 config/config.yml
 tmp/*
 db/*.sqlite3
-log/*
+log/*.log
+log/deploys/*.log
 vendor/rails
 public/javascripts/site.js
 public/stylesheets/site.css
