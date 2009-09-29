@@ -1,0 +1,23 @@
+- content_for :title, 'New Site'
+- content_for :meta, "don't blink - you might miss the installation"
+
+- form_for @site do |f|
+  = required_field_legend
+  = f.error_messages
+  
+  .required
+    = f.label :name, 'Site Name'
+    = f.text_field :name
+    
+  %div
+    = f.label :domain
+    = f.text_field :domain
+    %span The main domain for the site (ex. myblog.com)
+    
+  %div
+    = f.label :alias
+    = f.text_field :alias
+    %span Alternate domain for the site (ex. www.myblog.com)
+    
+  %div
+    = f.submit 'Continue'

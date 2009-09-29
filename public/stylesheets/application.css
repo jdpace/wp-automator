@@ -104,6 +104,7 @@ a:hover   { color: #BF3838; text-decoration: underline; }
 form {
   width: 620px;
 }
+form .required { color: #BF3838;}
 form > div { margin: 1em 0;}
 form label {
   font-weight: bold; text-transform: uppercase; line-height: 1.6em;
