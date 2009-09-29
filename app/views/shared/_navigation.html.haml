@@ -1,0 +1,5 @@
+#nav-bar
+  %ul
+    %li= link_to 'Sites',     sites_path, :class => active_if_here(:sites => [:index])
+    %li= link_to 'New Site',  sites_path, :class => active_if_here(:sites => [:new])
+  %div.clear

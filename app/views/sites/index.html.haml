@@ -1,1 +1,17 @@
-%h1 Sites
+- content_for :title, 'WordPress Sites'
+- content_for :meta,  'manage and automate wordpress installs'
+
+- if @sites.any?
+  %table
+    %thead
+      %tr
+        %th.main Site Name
+        %th Domain
+    %tbody
+      - @sites.each do |site|
+        %tr
+          %td= site.name
+          %td= link_to site.domain, site.domain if site.domain
+- else
+  %p
+    Whoops, nothing to see here. To experience your very first automated WordPress install click the 'New Site' button above.
