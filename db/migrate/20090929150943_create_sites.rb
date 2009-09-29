@@ -3,7 +3,10 @@ class CreateSites < ActiveRecord::Migration
     create_table :sites do |t|
       t.string        :name
       t.string        :url
-      t.string        :domains
+      
+      t.string        :domain
+      t.string        :alias
+      
       t.string        :token
       
       t.timestamps
