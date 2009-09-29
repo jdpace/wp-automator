@@ -10,7 +10,7 @@
     %tbody
       - @sites.each do |site|
         %tr
-          %td= site.name
+          %td= link_to site.name, site_path(site)
           %td= link_to site.domain, site.domain if site.domain
 - else
   %p

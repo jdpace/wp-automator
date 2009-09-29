@@ -50,4 +50,23 @@ class SitesControllerTest < ActionController::TestCase
     end
   end
   
+  context 'GET /sites/:url' do
+    setup do
+      @site = Factory.build(:site, :url => 'site')
+      Site.expects(:find_by_url!).with(@site.url).returns(@site)
+    end
+    
+    %w(pending deploying complete).each do |state|
+      context "when the site is #{state}" do
+        setup do
+          @site.state = state
+          get :show, :id => @site.to_param
+        end
+      
+        should_assign_to(:site) {@site}
+        should_render_template :"show_#{state}"
+      end
+    end
+  end
+  
 end

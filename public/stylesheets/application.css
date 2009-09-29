@@ -132,9 +132,10 @@ form > div > span {
 }
 
 /* Tables */
-table { width: 100%; border: 1px solid #C6C6C6;}
+table { width: 100%; border: 1px solid #C6C6C6; margin-bottom: 1em; }
 table th, table td { border-bottom: 1px solid #C6C6C6; padding: 15px 12px; text-align: left; }
 table th { background-color: #E2E2E2; font-weight: bold; text-transform: uppercase; }
+table tbody th { white-space: nowrap; }
 table tbody tr:nth-child(odd) td { background-color: #F9F9F9; }
 table .main { width: 100%; }
 

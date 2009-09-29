@@ -1,0 +1,42 @@
+- content_for :title, @site.name
+- content_for :meta, "current state: #{@site.state}"
+
+%table
+  %tbody
+    %tr
+      %th WordPress version
+      %td.main
+        %pre Latest
+    %tr
+      %th WordPress User
+      %td
+        %pre= App.wordpress[:username]
+    %tr
+      %th WordPress Temp Password
+      %td
+        %pre= @site.token
+    %tr
+      %th DB
+      %td
+        %pre= @site.url
+    %tr
+      %th DB User
+      %td
+        %pre= @site.url
+    %tr
+      %th DB Password
+      %td
+        %pre= @site.token
+    %tr
+      %th Install path
+      %td
+        %pre= @site.install_path
+    %tr
+      %th Apache vhost
+      %td
+        %pre= h render(:partial => 'vhost', :locals => {:site => @site})
+
+%p.meta If your comfortable with everything, go ahead and pull the trigger. You'll be enjoying your new blog in moments.
+
+- form_for @site, :url => deploy_site_path(@site), :method => :put do |f|
+  %div= f.submit 'Deploy'

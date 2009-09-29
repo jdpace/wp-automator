@@ -26,6 +26,14 @@ class Site < ActiveRecord::Base
     url
   end
   
+  def install_path
+    File.join(App.server[:sites_directory], self.url)
+  end
+  
+  def sub_domain
+    [self.url, App.server[:domain]].join('.')
+  end
+  
   protected
   
     def generate_token

@@ -4,6 +4,11 @@ class SitesController < ApplicationController
     @sites = Site.all
   end
   
+  def show
+    @site = Site.find_by_url!(params[:id])
+    render :"show_#{@site.state}"
+  end
+  
   def new
     @site = Site.new
   end

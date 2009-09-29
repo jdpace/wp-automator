@@ -1,0 +1,11 @@
+<VirtualHost *:80>
+  ServerName <%= site.sub_domain %>
+  ServerAlias <%= [site.domain, site.alias].join(' ') %>
+  
+  DocumentRoot <%= site.install_path %>
+  
+  <Directory />
+    Options FollowSymLinks
+    AllowOverride All
+  </Directory>
+</VirtualHost>
