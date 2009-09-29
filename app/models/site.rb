@@ -6,6 +6,10 @@ class Site < ActiveRecord::Base
   validates_presence_of   :name
   validates_uniqueness_of :domain, :allow_blank => true
   
+  def to_param
+    url
+  end
+  
   protected
   
     def generate_token

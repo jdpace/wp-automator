@@ -18,6 +18,10 @@ class SiteTest < ActiveSupport::TestCase
     should 'generate a token' do
       assert_not_nil @site.token
     end
+    
+    should 'use the url as to_param' do
+      assert_equal @site.url, @site.to_param
+    end
   end
   
 end
