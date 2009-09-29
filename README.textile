@@ -1,0 +1,15 @@
+h1. WP Automator
+
+Automated WordPress installs. Used to install and manage multiple WordPress sites on a single server. So easy a designer can use it.
+
+h3. Overview
+
+# User logs in via simple auth
+# Enters site name and domain
+# Automator downloads latest version of WordPress
+# Extracts package to install location
+# Creates database, user, and adds permissions for user to said database
+# Creates a wp-config.php file with database info and Secure Random Keys for Session keys
+# Create a vhost file for apache with the domain info as well as a subdomain for development (ex. myblog.wordpress.example.com)
+# Restarts Apache to load the new vhost file
+# POSTs necessary info to the install.php script and prompts the user to login to their newly created WordPress install
