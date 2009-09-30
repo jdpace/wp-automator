@@ -8,21 +8,17 @@
       %td.main
         %pre Latest
     %tr
-      %th WordPress User
+      %th WordPress Email
       %td
-        %pre= App.wordpress[:username]
-    %tr
-      %th WordPress Temp Password
-      %td
-        %pre= @site.token
+        %pre= App.wordpress[:admin_email]
     %tr
       %th DB
       %td
-        %pre= @site.url
+        %pre= @site.database
     %tr
       %th DB User
       %td
-        %pre= @site.url
+        %pre= @site.database
     %tr
       %th DB Password
       %td

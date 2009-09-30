@@ -30,7 +30,7 @@ class SitesController < ApplicationController
   
   def log
     if File.exists?(@site.log_file)
-      render :text => `tail -n 1000 #{@site.log_file}`, :content_type => 'text/plain', :status => (@site.complete? ? :ok : :partial_content)
+      render :text => `tail -n 2000 #{@site.log_file}`, :content_type => 'text/plain', :status => (@site.complete? ? :ok : :partial_content)
     else
       render :nothing => true
     end

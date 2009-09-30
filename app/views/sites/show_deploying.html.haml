@@ -2,3 +2,5 @@
 - content_for :meta, "current state: #{@site.state}"
 
 %pre.log{:"data-location" => log_site_url(@site)}= h render(:file => @site.log_file) if File.exists?(@site.log_file)
+
+= link_to 'Deploying...', "http://#{@site.sub_domain}/wp-login.php", :class => 'continue-button deploying'

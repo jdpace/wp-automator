@@ -153,3 +153,12 @@ table .main { width: 100%; }
   height: 400px; overflow: auto; padding: 10px;
   border: 1px solid #C6C6C6; background-color: #F9F9F9;
 }
+
+.continue-button, .continue-button:hover, .continue-button:visited {
+  display:inline-block; width: auto; padding: 0.5em; margin: 1em 0 0 0;
+  font-size: 1.2em; line-height: 1em; text-transform: uppercase;
+  border: none; color: #FFF; background-color: #387fc1; text-decoration: none;
+}
+.continue-button.deploying {
+  padding-left: 2em; background: #387fc1 url(images/ajax-loader.gif) 0.5em 50% no-repeat; cursor: default;
+}

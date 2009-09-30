@@ -38,6 +38,10 @@ class Site < ActiveRecord::Base
     File.join(Rails.root, 'log', 'deploys', "#{self.url}.log")
   end
   
+  def database
+    self.url.underscore
+  end
+  
   protected
   
     def generate_token
@@ -45,13 +49,12 @@ class Site < ActiveRecord::Base
     end
     
     def run_deploy_task
-      puts 'uh oh'
       options = {
         :rails_env  => Rails.env,
         :site_id    => self.id
       }
       args = options.map { |n, v| "#{n.to_s.upcase}='#{v}'" }
-      system "#{App.server[:rake]} sites:deploy #{args.join(' ')} --trace 2>&1 >> #{self.log_file} &"
+      system "#{App.server[:rake]} sites:deploy #{args.join(' ')} --trace 2>&1 >> #{Rails.root}/log/rake.log &"
     end
   
     
