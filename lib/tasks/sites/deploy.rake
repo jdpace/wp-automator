@@ -19,7 +19,7 @@ namespace :sites do
       :create_config,
       :create_database,
       :create_virtual_host,
-      :restart_apache,
+      :reload_apache,
       :install_wordpress,
       :complete_site,
       :close_log
