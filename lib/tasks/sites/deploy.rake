@@ -108,10 +108,10 @@ namespace :sites do
       end
     end
     
-    desc 'Attempt to restart apache'
-    task :restart_apache => :environment do
-      logger.info 'Attempting to restart apache gracefully'
-      output = `#{App.server[:apache_ctl]} graceful`
+    desc 'Attempt to reload apache'
+    task :reload_apache => :environment do
+      logger.info 'Attempting to reload apache config'
+      output = `#{App.server[:apache_reload]}`
       output.split("\n").each {|line| logger.info "<< #{line}"}
     end
     
