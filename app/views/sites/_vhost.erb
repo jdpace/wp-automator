@@ -1,6 +1,6 @@
 <VirtualHost *:80>
-  ServerName <%= site.sub_domain %>
-  ServerAlias <%= [site.domain, site.alias].join(' ') %>
+  ServerName <%= site.domain %>
+  ServerAlias <%= [site.alias, site.sub_domain].join(' ') %>
   
   DocumentRoot <%= File.join site.install_path, 'wordpress' %>
   
