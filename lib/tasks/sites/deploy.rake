@@ -61,7 +61,7 @@ namespace :sites do
     
     desc "Fix Wordpress permissions"
     task :fix_permissions => :environment do
-      content_dir = File.join(site.install_path,'wordpress','wp-content'
+      content_dir = File.join(site.install_path,'wordpress','wp-content')
       uploads_dir = File.join(content_dir,'uploads')
       logger.info "mkdir: #{uploads_dir}"
       FileUtils.mkdir_p uploads_dir
