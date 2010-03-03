@@ -17,6 +17,7 @@ namespace :sites do
       :download_wordpress,
       :extract_wordpress,
       :create_config,
+      :fix_permissions,
       :create_database,
       :create_virtual_host,
       :reload_apache,
@@ -56,6 +57,17 @@ namespace :sites do
           end
         end
       end
+    end
+    
+    desc "Fix Wordpress permissions"
+    task :fix_permissions => :environment do
+      content_dir = File.join(site.install_path,'wordpress','wp-content'
+      uploads_dir = File.join(content_dir,'uploads')
+      logger.info "mkdir: #{uploads_dir}"
+      FileUtils.mkdir_p uploads_dir
+      
+      logger.info "chmod -R 0775 #{content_dir}"
+      FileUtils.chmod_R 0775, content_dir
     end
     
     desc 'Create a database and a user for the WordPress install'

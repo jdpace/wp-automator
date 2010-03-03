@@ -39,7 +39,9 @@ class Site < ActiveRecord::Base
   end
   
   def database
-    self.url.underscore
+    # Make a MySQL safe string limited to 16 chars since
+    # this will also be used for the user name.
+    self.url.underscore[0...16]
   end
   
   protected
