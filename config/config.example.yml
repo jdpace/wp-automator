@@ -4,6 +4,29 @@
 #  Save this file to config/config.yml       #
 ##############################################
 
+# Simple HTTP Auth for the site
 authentication:
   username: admin
   password: admin
+  
+server:
+  # Where WP Automator will run
+  # Uses this to set up temp url to access sites
+  # e.g. my-blog.wp-automator.example.com
+  # Just create a Wildcard DNS record to accomidate
+  # these sites - *.wp-automator.example.com
+  domain: wp-automator.example.com
+  # Install location for the Wordpress sites
+  sites_directory: /var/www/sites
+  rake: /usr/bin/rake
+  apache_root: /etc/apache2
+  apache_reload: sudo /etc/init.d/apache2 reload
+
+wordpress:
+  # Location of Wordpress package. Replace with specific 
+  # version if you want to standardize all installs to same release
+  package:  http://wordpress.org/latest.zip
+  # The Admin email used when installing Wordpress
+  admin_email: admin@example.com
+  # Wordpress Install option
+  public: 1
